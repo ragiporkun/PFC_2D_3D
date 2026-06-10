@@ -1,17 +1,3 @@
-# Python
+# Only ignore Python caches; simulation data is versioned in batches.
 __pycache__/
 *.pyc
-
-# IDE
-.idea/
-
-# Generated simulation output (large, reproducible from the .py sources)
-VTKSingle/
-VTK_TimeScale/
-Plots_P1800_*/
-run1_baseline_P1200/
-run1_baseline_P1800/
-run2_experimental/
-run2_intermediate/
-*.npy
-*.vtk
