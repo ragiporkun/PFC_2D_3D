@@ -37,7 +37,7 @@ import numpy as np
 import fipy as fp
 import matplotlib.pyplot as plt
 
-os.makedirs("Plots_P1800_v0.05_alpha3_beta0.5_M0.6", exist_ok=True)
+os.makedirs("Plots_P1800_v0.02_alpha3_beta0.5_M0.6", exist_ok=True)
 
 # ======================================================================
 # PARAMETERS  (single consolidated block -- closes m3; documents R3-03)
@@ -76,7 +76,7 @@ BETA_LATENT = 0.5   # latent-heat coupling magnitude. rev8 used -0.025 (~0 laten
 #   (ALPHA_CP, BETA_LATENT) = (0.1, 0.025) and once with (5.0, 0.5).
 
 # --- process / heat source (documented, parametrized -- R3-14, R3-19) ---
-v_x    = 0.05                       # scan speed (map to m/s in paper -- M5/R2-02)
+v_x    = 0.02                       # scan speed (map to m/s in paper -- M5/R2-02)
 power  = 1800.0
 absorption = 0.3
 sigma_x = 3.0 * R0                     # beam half-widths in LATTICE UNITS (was 20, 50
@@ -226,11 +226,11 @@ for step in range(N_STEPS):
         axT.contour(T.value.reshape(ny, nx), levels=[1.0], colors='black',
                     origin='lower', extent=[0, Lx, 0, Ly])
         axT.set_ylabel('T'); fig.colorbar(imT, ax=axT)
-        plt.tight_layout(); plt.savefig(f"Plots_P1800_v0.05_alpha3_beta0.5_M0.6/psiT_{step}.png"); plt.close()
+        plt.tight_layout(); plt.savefig(f"Plots_P1800_v0.02_alpha3_beta0.5_M0.6/psiT_{step}.png"); plt.close()
 
     if step % 50 == 0:
-        np.save(f"Plots_P1800_v0.05_alpha3_beta0.5_M0.6/psi_{int(round(elapsed))}.npy", psi.value)
-        np.save(f"Plots_P1800_v0.05_alpha3_beta0.5_M0.6/T_{int(round(elapsed))}.npy", T.value)
+        np.save(f"Plots_P1800_v0.02_alpha3_beta0.5_M0.6/psi_{int(round(elapsed))}.npy", psi.value)
+        np.save(f"Plots_P1800_v0.02_alpha3_beta0.5_M0.6/T_{int(round(elapsed))}.npy", T.value)
 
     print(f"step={step} elapsed={elapsed:.1f} "
           f"T[min,max]=({T.value.min():.3f},{T.value.max():.3f}) "
