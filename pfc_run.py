@@ -40,7 +40,7 @@ class Config:
     # --- structural model (unchanged from rev9) ---
     psi0: float = 0.0
     T0: float = 0.6
-    M: float = 0.06
+    M: float = 0.6
     tau_psi: float = 1.0
     # --- THERMAL knobs (physical values -- the corrected coupling) ---
     alpha_cp: float = 3.0              # heat capacity c_p (= alpha). NOT 0.1.

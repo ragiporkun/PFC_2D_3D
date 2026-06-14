@@ -37,7 +37,7 @@ import numpy as np
 import fipy as fp
 import matplotlib.pyplot as plt
 
-os.makedirs("Plots_P1800_v0.1_alpha3_beta1_M0.6", exist_ok=True)
+os.makedirs("Plots_P1800_v0.016_alpha3_beta0.5_M0.6", exist_ok=True)
 
 # ======================================================================
 # PARAMETERS  (single consolidated block -- closes m3; documents R3-03)
@@ -71,12 +71,12 @@ grain_radius = 16.0
 # Set these to physical values to actually exercise the non-isothermal
 # coupling; the dimensionless rev8 values are kept here only as a baseline.
 ALPHA_CP   = 3.0    # heat capacity c_p. rev8 used 0.1 (~30x too small). USE ~5.
-BETA_LATENT = 1.0   # latent-heat coupling magnitude. rev8 used -0.025 (~0 latent).
+BETA_LATENT = 0.5   # latent-heat coupling magnitude. rev8 used -0.025 (~0 latent).
 #   For a side-by-side "coupling on/off" figure, run once with
 #   (ALPHA_CP, BETA_LATENT) = (0.1, 0.025) and once with (5.0, 0.5).
 
 # --- process / heat source (documented, parametrized -- R3-14, R3-19) ---
-v_x    = 0.1                           # scan speed (map to m/s in paper -- M5/R2-02)
+v_x    = 0.016                       # scan speed (map to m/s in paper -- M5/R2-02)
 power  = 1800.0
 absorption = 0.3
 sigma_x = 3.0 * R0                     # beam half-widths in LATTICE UNITS (was 20, 50
@@ -86,8 +86,7 @@ y_laser_center = Ly
 
 # --- run control --------------------------------------------------------
 MODE = "full"                          # "full" or "thermal_diag"
-N_STEPS = 3751
-SAVE_TIMES = (1, 5, 10, 25, 50, 100, 250, 300, 500, 750, 1000, 1250, 1500, 1750, 2000, 2500, 3000, 3500, 3750)
+N_STEPS = 20001
 
 # ======================================================================
 # MESH AND FIELDS
@@ -227,11 +226,11 @@ for step in range(N_STEPS):
         axT.contour(T.value.reshape(ny, nx), levels=[1.0], colors='black',
                     origin='lower', extent=[0, Lx, 0, Ly])
         axT.set_ylabel('T'); fig.colorbar(imT, ax=axT)
-        plt.tight_layout(); plt.savefig(f"Plots_P1800_v0.1_alpha3_beta1_M0.6/psiT_{step}.png"); plt.close()
+        plt.tight_layout(); plt.savefig(f"Plots_P1800_v0.016_alpha3_beta0.5_M0.6/psiT_{step}.png"); plt.close()
 
-    if int(round(elapsed)) in SAVE_TIMES:
-        np.save(f"Plots_P1800_v0.1_alpha3_beta1_M0.6/psi_{int(round(elapsed))}.npy", psi.value)
-        np.save(f"Plots_P1800_v0.1_alpha3_beta1_M0.6/T_{int(round(elapsed))}.npy", T.value)
+    if step % 50 == 0:
+        np.save(f"Plots_P1800_v0.016_alpha3_beta0.5_M0.6/psi_{int(round(elapsed))}.npy", psi.value)
+        np.save(f"Plots_P1800_v0.016_alpha3_beta0.5_M0.6/T_{int(round(elapsed))}.npy", T.value)
 
     print(f"step={step} elapsed={elapsed:.1f} "
           f"T[min,max]=({T.value.min():.3f},{T.value.max():.3f}) "

@@ -16,7 +16,7 @@ dx, dy = 1600 / 2**11, 1600 / 2**11
 nx, ny = 384, 128
 
 # Load the data
-df = pd.read_csv("local_maxima_with_avg_angles_floored_3750_5.csv")
+df = pd.read_csv("local_maxima_with_avg_angles_floored_1000_1.csv")
 
 x = np.arange(nx) * dx
 y = np.arange(ny) * dy

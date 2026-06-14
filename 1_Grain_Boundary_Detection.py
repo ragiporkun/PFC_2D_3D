@@ -11,8 +11,8 @@ nx, ny   = 384, 128
 R        = 4 * np.pi / np.sqrt(3)
 frac_R   = 0.20
 
-PSI_FILE = "Plots_P1800_v0.1_alpha5_beta0.5_M0.6\psi_3750.npy"
-OUT_PATH = "local_maxima_with_avg_angles_floored_3750_5.csv"
+PSI_FILE = "/home/debian/PycharmProjects/PFC_2D_3D/Plots_P1800_v1_alpha3_beta0.5_M0.6/psi_1000.npy"
+OUT_PATH = "local_maxima_with_avg_angles_floored_1000_1.csv"
 
 
 def load_psi(path, ny, nx):

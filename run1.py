@@ -21,19 +21,19 @@ from pfc_run import Config, run_simulation
 
 cfg = Config(
     # domain: small but wide enough for several columnar grains
-    nx=256, ny=128, dx=1600/2**11,        # Lx ~ 300, Ly ~ 100 (units)
+    nx=192, ny=128, dx=1600/2**11,        # Lx ~ 300, Ly ~ 100 (units)
     dt=1.0,
     # physical thermal coupling (the corrected, ON regime)
     alpha_cp=3.0,                          # heat capacity c_p (= alpha)
     beta_latent=0.5,                       # latent-heat coupling
     # process: BASELINE regime
-    v_x=1.0,                               # ~7.255 m/s in the mesoscale mapping
-    power=1200.0,                          # tune so peak T ~ T_m (see note above)
+    v_x=0.1,                               # ~7.255 m/s in the mesoscale mapping
+    power=150.0,                          # tune so peak T ~ T_m (see note above)
     # seeding / schedule
     seed=7, seed_spacing=28.0, grain_radius=16.0,
     warmup_steps=150, cooldown_steps=200,
     # io
-    outdir="run1_baseline_P1200",
+    outdir="run1_baseline_P150_v0.1",
     save_every=10, gr_every=10,
 )
 

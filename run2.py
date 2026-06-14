@@ -31,20 +31,20 @@ again sits near T_m (thermal_diag / Rosenthal check).
 """
 from pfc_run import Config, run_simulation
 
-MAP = "intermediate"     # 'experimental' (true speed, short track) or 'intermediate'
+MAP = "experimental"     # 'experimental' (true speed, short track) or 'intermediate'
 
 if MAP == "experimental":
     v_x = 0.0023         # ~0.01667 m/s  (literal experimental speed)
     nx = 96              # SHORT track to keep scan_steps tractable
     dt = 1.0             # larger step allowed by the slower transient
     power = 150.0        # much lower: slow dwell -> retune to peak T ~ T_m
-    outdir = "run2_experimental"
+    outdir = "run2_experimental_P150_v0.0023"
 else:                    # intermediate: 50x slower than Run 1
     v_x = 0.02           # ~0.145 m/s
     nx = 192
-    dt = 1.5
-    power = 400.0
-    outdir = "run2_intermediate"
+    dt = 1.0
+    power = 150.0
+    outdir = "run2_intermediate_P150_v0.02"
 
 cfg = Config(
     nx=nx, ny=128, dx=1600/2**11,
