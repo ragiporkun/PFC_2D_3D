@@ -40,7 +40,7 @@ import numpy as np
 import fipy as fp
 import matplotlib.pyplot as plt
 
-os.makedirs("Plots_P1800_v1_alpha3_beta0.5_M0.6_100", exist_ok=True)
+os.makedirs("Plots_P1800_v1_alpha3_beta0.5_M1_1", exist_ok=True)
 
 # ======================================================================
 # PARAMETERS  (single consolidated block -- closes m3; documents R3-03)
@@ -62,8 +62,8 @@ dt = 1.0                               # solver step (rev8 used timeStep=100*dt=
 # --- structural model (unchanged from rev8) -----------------------------
 psi0 = 0.0
 T0   = 0.6                             # ambient / preheat temperature
-M    = 0.6                            # thermal conductivity (diffusion coeff in T_eq)
-tau_psi = 0.01
+M    = 1.                            # thermal conductivity (diffusion coeff in T_eq)
+tau_psi = 1.
 
 # --- seeding (programmatic polycrystal, fits any domain -- from pfc_run) -
 seed         = 7
@@ -230,11 +230,11 @@ for step in range(N_STEPS):
         axT.contour(T.value.reshape(ny, nx), levels=[1.0], colors='black',
                     origin='lower', extent=[0, Lx, 0, Ly])
         axT.set_ylabel('T'); fig.colorbar(imT, ax=axT)
-        plt.tight_layout(); plt.savefig(f"Plots_P1800_v1_alpha3_beta0.5_M0.6_100/psiT_{step}.png"); plt.close()
+        plt.tight_layout(); plt.savefig(f"Plots_P1800_v1_alpha3_beta0.5_M1_1/psiT_{step}.png"); plt.close()
 
     if int(round(elapsed)) in SAVE_TIMES:
-        np.save(f"Plots_P1800_v1_alpha3_beta0.5_M0.6_100/psi_{int(round(elapsed))}.npy", psi.value)
-        np.save(f"Plots_P1800_v1_alpha3_beta0.5_M0.6_100/T_{int(round(elapsed))}.npy", T.value)
+        np.save(f"Plots_P1800_v1_alpha3_beta0.5_M1_1/psi_{int(round(elapsed))}.npy", psi.value)
+        np.save(f"Plots_P1800_v1_alpha3_beta0.5_M1_1/T_{int(round(elapsed))}.npy", T.value)
 
     print(f"step={step} elapsed={elapsed:.1f} "
           f"T[min,max]=({T.value.min():.3f},{T.value.max():.3f}) "
