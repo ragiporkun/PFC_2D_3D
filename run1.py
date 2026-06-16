@@ -24,16 +24,16 @@ cfg = Config(
     nx=192, ny=128, dx=1600/2**11,        # Lx ~ 300, Ly ~ 100 (units)
     dt=1.0,
     # physical thermal coupling (the corrected, ON regime)
-    alpha_cp=3.0,                          # heat capacity c_p (= alpha)
-    beta_latent=0.5,                       # latent-heat coupling
+    alpha_cp=0.1,                          # heat capacity c_p (= alpha)
+    beta_latent=0.025,                       # latent-heat coupling
     # process: BASELINE regime
-    v_x=0.1,                               # ~7.255 m/s in the mesoscale mapping
+    v_x=1.,                               # ~7.255 m/s in the mesoscale mapping
     power=150.0,                          # tune so peak T ~ T_m (see note above)
     # seeding / schedule
     seed=7, seed_spacing=28.0, grain_radius=16.0,
     warmup_steps=150, cooldown_steps=200,
     # io
-    outdir="run1_baseline_P150_v0.1",
+    outdir="run1_baseline_P150_v1_alpha0.1_beta0.025",
     save_every=10, gr_every=10,
 )
 
