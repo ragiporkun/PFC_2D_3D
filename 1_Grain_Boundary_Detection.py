@@ -11,7 +11,7 @@ nx, ny   = 384, 128
 R        = 4 * np.pi / np.sqrt(3)
 frac_R   = 0.20
 
-PSI_FILE = "/home/debian/PycharmProjects/PFC_2D_3D/Plots_P1800_v1_alpha3_beta0.5_M0.6/psi_1000.npy"
+PSI_FILE = "/home/debian/PycharmProjects/PFC_2D_3D/Plots_P1800_v1_alpha0.1_beta0.025_M0.6_1/psi_1000.npy"
 OUT_PATH = "local_maxima_with_avg_angles_floored_1000_1.csv"
 
 
