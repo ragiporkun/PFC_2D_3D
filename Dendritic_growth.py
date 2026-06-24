@@ -40,9 +40,9 @@ ALPHA_CP    = 0.1                      # heat capacity c_p. Use ~3.0 if MODE="fu
 BETA_LATENT = 0.025                    # latent-heat coupling constant.
 
 # --- run control -------------------------------------------------------
-N_STEPS    = 2001
-PLOT_EVERY = 10
-SAVE_TIMES = (1, 250, 500, 1000, 1500, 2000, 2500, 3000, 4000, 5000, 6000)
+N_STEPS    = 5001
+PLOT_EVERY = 100
+SAVE_TIMES = (1, 500, 1000, 1500, 2000, 2500, 3000, 4000, 5000, 6000)
 
 OUTDIR = f"Plots_dendrite_psimean{PSI_MEAN}_T{T0}_{LATENT_HEAT_MODE}"
 os.makedirs(OUTDIR, exist_ok=True)
